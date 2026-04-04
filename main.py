@@ -1,3 +1,5 @@
+import csv
+
 # Checks user int input
 def get_valid_int_input(prompt):
     while True:
@@ -11,6 +13,13 @@ def get_valid_int_input(prompt):
 
         except ValueError:
             print('Please Enter a Valid Number.\n')
+
+def save_inventory(inventory):
+    with open('inventory.csv', 'w', newline='') as file:
+        writer = csv.writer(file)
+
+        for item, amount in inventory.items():
+            writer.writerow([item, amount])
 
 inventory = {}
 
@@ -26,7 +35,22 @@ while True:
 
 # This Exits the program
     if user_input.lower() == 'x':
-        print('Exiting the program!')
+        while True:
+            print('Would You Like to Save Your Inventory?')
+            save_program = input('Enter 1 for Yes or 2 for No: ')
+
+            if save_program == '1':
+                save_inventory(inventory)
+                print('Inventory Saved! Exiting the Program!')
+                break
+
+            elif save_program == '2':
+                print('Exiting the Program!')
+                break
+
+            else:
+                print('Invalid Input!\n')
+                continue
         break
 
 # Displays total inventory
