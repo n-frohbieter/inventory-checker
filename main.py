@@ -1,6 +1,12 @@
-inventory = {}
+def get_valid_int_input(prompt):
+    while True:
+        try:
+            return int(input(prompt))
 
-inventory['33.5 Pronto'] = 100
+        except ValueError:
+            print('Please Enter a Valid Number')
+
+inventory = {}
 
 # Main loop that runs the program
 while True:
@@ -26,7 +32,7 @@ while True:
 # Asks user to create new inventory item and the amount and places it in inventory
     elif user_input == '2':
         inventory_item = input('Enter the New Inventory Item Description: ').lower()
-        item_quantity = int(input('Enter the Amount of the Item: '))
+        item_quantity = get_valid_int_input('Enter the Amount of the Item: ')
 
         inventory[inventory_item] = item_quantity
         continue
@@ -37,7 +43,7 @@ while True:
 
 # Checks to see if there is enough in inventory
         if check_item in inventory:
-            check_amount = int(input('How many do you need to produce the job?: '))
+            check_amount = get_valid_int_input('How many do you need to produce the job?: ')
 
             if check_amount <= inventory[check_item]:
                 print('There is enough in inventory to produce a job!')
@@ -46,11 +52,10 @@ while True:
                 print('There is not enough to produce a job! You will need to order more!')
 
         else:
-            print('Item is not in Inventory! Job is not Possible!')
+            print('Item is not in Inventory! Cannot Produce the job!')
 
         continue
 
 # Catches invalid options from the user
     else:
         print('Invalid Input!')
-        continue
