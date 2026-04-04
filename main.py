@@ -8,7 +8,7 @@ def get_valid_int_input(prompt):
                 continue
 
             return number_value
-        
+
         except ValueError:
             print('Please Enter a Valid Number.\n')
 
@@ -16,7 +16,7 @@ inventory = {}
 
 # Main loop that runs the program
 while True:
-    print('Enter x to exit program.')
+    print('\nEnter x to exit program.')
     print('Enter 1 to View Inventory')
     print('Enter 2 to add Inventory Item')
     print('Enter 3 to Check if there is Enough Inventory for a Job')
@@ -31,7 +31,8 @@ while True:
 
 # Displays total inventory
     elif user_input == '1':
-        print(inventory)
+        for item, quantity in inventory.items():
+            print(f'{item}: {quantity}')
         continue
 
 # Asks user to create new inventory item and the amount and places it in inventory
@@ -57,7 +58,7 @@ while True:
                 print('There is not enough to produce a job! You will need to order more!')
 
         else:
-            print('Item is not in Inventory! Cannot Produce the job!')
+            print('Item is not in Inventory! Cannot Fulfill the Job!')
 
         continue
 
