@@ -1,16 +1,21 @@
+# Checks user int input
 def get_valid_int_input(prompt):
     while True:
         try:
-            return int(input(prompt))
+            number_value = int(input(prompt))
+            if number_value < 0 :
+                print('Please Enter a Positive Number.\n')
+                continue
 
+            return number_value
+        
         except ValueError:
-            print('Please Enter a Valid Number')
+            print('Please Enter a Valid Number.\n')
 
 inventory = {}
 
 # Main loop that runs the program
 while True:
-    print()
     print('Enter x to exit program.')
     print('Enter 1 to View Inventory')
     print('Enter 2 to add Inventory Item')
