@@ -31,8 +31,12 @@ while True:
 
 # Displays total inventory
     elif user_input == '1':
-        for item, quantity in inventory.items():
-            print(f'{item}: {quantity}')
+        if not inventory:
+            print('Inventory is Empty.')
+        else:
+            for item, quantity in inventory.items():
+                print(f'{item}: {quantity}')
+
         continue
 
 # Asks user to create new inventory item and the amount and places it in inventory
