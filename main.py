@@ -21,7 +21,24 @@ def save_inventory(inventory):
         for item, amount in inventory.items():
             writer.writerow([item, amount])
 
-inventory = {}
+def load_inventory():
+    inventory = {}
+
+    try:
+        with open('inventory.csv', 'r') as file:
+            reader = csv.reader(file)
+
+            for row in reader:
+                item = row[0]
+                quantity = int(row[1])
+                inventory[item] = quantity
+
+    except FileNotFoundError:
+        print('No Inventory File Found! Starting Fresh\n')
+
+    return inventory
+
+inventory = load_inventory()
 
 # Main loop that runs the program
 while True:
