@@ -99,6 +99,23 @@ while True:
             if check_amount <= inventory[check_item]:
                 print('There is enough in inventory to produce a job!')
 
+                while True:
+                    print('Would You Like to Process this Order?')
+                    process_order = input('Enter 1 to Process Order or 2 to Cancel: ')
+
+                    if process_order == '1':
+                        inventory[check_item] -= check_amount
+                        print('Order was Processed')
+                        break
+
+                    elif process_order == '2':
+                        print('Order was not Processed!\n')
+                        break
+
+                    else:
+                        print('Invalid Input!\n')
+                        continue
+
             else:
                 print('There is not enough to produce a job! You will need to order more!')
 
