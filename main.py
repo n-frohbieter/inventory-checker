@@ -92,10 +92,10 @@ while True:
     elif user_input == '3':
         check_item = input('What is the name of the Item you are checking?: ').lower()
 
-# Checks to see if there is enough in inventory
         if check_item in inventory:
             check_amount = get_valid_int_input('How many do you need to produce the job?: ')
 
+            # Checks to see if there is enough in inventory
             if check_amount <= inventory[check_item]:
                 print('There is enough in inventory to produce a job!')
 
